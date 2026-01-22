@@ -1405,8 +1405,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     background: rgba(15, 23, 42, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -1415,6 +1415,8 @@ body {
     align-items: center;
     gap: 32px;
     z-index: 999;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links.active a {

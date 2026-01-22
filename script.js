@@ -211,6 +211,12 @@ function initNavigation() {
             navToggle.classList.toggle('active');
             if (navLinks) {
                 navLinks.classList.toggle('active');
+                // Prevent body scroll when menu is open
+                if (navLinks.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             }
         });
     }
@@ -365,6 +371,8 @@ function initSmoothScroll() {
                 const navToggle = document.getElementById('nav-toggle');
                 if (navLinks) navLinks.classList.remove('active');
                 if (navToggle) navToggle.classList.remove('active');
+                // Restore body scroll
+                document.body.style.overflow = '';
             }
         });
     });
