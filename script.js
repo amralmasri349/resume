@@ -11,7 +11,36 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCounterAnimation();
     initSmoothScroll();
+    initSectionGlow();
 });
+
+// Section Glow Effect on Scroll
+function initSectionGlow() {
+    const sections = document.querySelectorAll('.section');
+
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '-50px 0px -50px 0px'
+    };
+
+    const glowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add glow effect
+                entry.target.classList.add('section-glow');
+
+                // Remove glow after animation completes
+                setTimeout(() => {
+                    entry.target.classList.remove('section-glow');
+                }, 1500);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        glowObserver.observe(section);
+    });
+}
 
 // Neural Network Background Animation
 function initNeuralBackground() {
